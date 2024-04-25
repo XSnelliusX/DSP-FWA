@@ -40,7 +40,7 @@ def im_test(net, im, args):
         prob = net(rois - bgr_mean)
         prob = F.softmax(prob, dim=1)
         prob = prob.data.cpu().numpy()
-        prob = 1 - np.mean(np.sort(prob[:, 0])[np.round(sample_num / 2).astype(int32):])
+        prob = 1 - np.mean(np.sort(prob[:, 0])[np.round(sample_num / 2).astype(int):])
     return prob, face_info
 
 
