@@ -93,7 +93,7 @@ class SpatialPyramidPool2D(nn.Module):
             w_r, h_r = map(lambda s: math.ceil(s / n), x.size()[2:])  # Receptive Field Size
             s_w, s_h = map(lambda s: math.floor(s / n), x.size()[2:])  # Stride
             max_pool = nn.MaxPool2d(kernel_size=(w_r, h_r), stride=(s_w, s_h))
-            y = max_pool(x)
+            y = max_pool(x.contiguous())
             if out is None:
                 out = y.view(y.size()[0], -1)
             else:
